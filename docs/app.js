@@ -9,7 +9,6 @@ const stateLabels = {
   pending: 'Pending',
   online: 'Responded',
   error: 'HTTP error',
-  redirect: 'Redirect',
   unreachable: 'Unconfirmed'
 }
 const time = new Intl.DateTimeFormat(undefined, { timeStyle: 'medium' })
@@ -20,7 +19,7 @@ let checking = false
 let filter = 'all'
 
 const hasIssue = result => ['error', 'unreachable'].includes(result.state)
-const responded = result => ['online', 'redirect'].includes(result.state)
+const responded = result => result.state === 'online'
 
 function renderRows() {
   if (!results.length) return

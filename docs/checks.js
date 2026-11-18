@@ -6,7 +6,6 @@ export async function checkEndpoint({ url }, probe = fetch) {
     mode: 'no-cors',
     credentials: 'omit',
     cache: 'no-store',
-    redirect: 'manual',
     referrerPolicy: 'no-referrer',
     signal
   }
@@ -14,9 +13,6 @@ export async function checkEndpoint({ url }, probe = fetch) {
   try {
     const response = await probe(url, options)
     const latencyMs = Math.max(1, Math.round(performance.now() - start))
-    if (response.type === 'opaqueredirect') {
-      return { state: 'redirect', detail: 'Server returned a redirect', latencyMs }
-    }
     if (response.type === 'opaque') {
       return { state: 'online', detail: 'HTTP status hidden by browser', latencyMs }
     }

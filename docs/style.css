@@ -63,7 +63,6 @@ h2 { font-size: 1.125rem; font-weight: 720; letter-spacing: -.02em; }
 .status-strip { height: 12px; display: flex; gap: 4px; margin-bottom: 5px; }
 .status-strip i { flex: 1; border-radius: 3px; background: #7b8ba7; }
 .status-strip i[data-state="online"] { background: #68d7b4; }
-.status-strip i[data-state="redirect"] { background: #a4bbea; }
 .status-strip i[data-state="unreachable"], .status-strip i[data-state="error"] { background: #f5a77d; }
 
 .directory { margin-top: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }

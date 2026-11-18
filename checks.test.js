@@ -9,7 +9,6 @@ test('local web checks use a credential-free HEAD request and accept an opaque r
     assert.equal(options.method, 'HEAD')
     assert.equal(options.targetAddressSpace, 'local')
     assert.equal(options.credentials, 'omit')
-    assert.equal(options.redirect, 'manual')
     assert.equal(options.mode, 'no-cors')
     assert.equal(options.cache, 'no-store')
     return { type: 'opaque' }
@@ -19,15 +18,13 @@ test('local web checks use a credential-free HEAD request and accept an opaque r
   assert.ok(result.latencyMs > 0)
 })
 
-test('redirects, HTTP errors and blocked requests remain separate', async () => {
+test('readable HTTP errors and blocked requests remain separate', async () => {
   const endpoint = { url: 'https://example.test/' }
-  const redirect = await checkEndpoint(endpoint, async (url, options) => {
+  const response = await checkEndpoint(endpoint, async (url, options) => {
     assert.equal(options.targetAddressSpace, undefined)
-    return { type: 'opaqueredirect' }
+    return new Response(null, { status: 503 })
   })
-  const response = await checkEndpoint(endpoint, async () => new Response(null, { status: 503 }))
   const blocked = await checkEndpoint(endpoint, async () => { throw new TypeError('Failed to fetch') })
-  assert.equal(redirect.state, 'redirect')
   assert.equal(response.detail, 'HTTP 503')
   assert.equal(response.state, 'error')
   assert.deepEqual(blocked, {
