@@ -17,7 +17,6 @@ const stateLabels = {
 const time = new Intl.DateTimeFormat(undefined, { timeStyle: 'medium' })
 let results = []
 let lastCheckedAt = null
-let nextCheckAt = null
 let checking = false
 let checkedCount = 0
 let filter = 'all'
@@ -94,11 +93,7 @@ function renderControls() {
   runButton.dataset.checking = String(checking)
   get('run-label').textContent = checking ? 'Checking…' : 'Check now'
 
-  if (checking) get('schedule').textContent = 'Checked ' + checkedCount + ' of ' + results.length
-  else if (nextCheckAt) {
-    const remaining = Math.max(0, Math.ceil((nextCheckAt - Date.now()) / 1000))
-    get('schedule').textContent = 'Next check in ' + remaining + 's'
-  }
+  get('check-progress').textContent = 'Checked ' + checkedCount + ' of ' + results.length
 }
 
 async function runChecks() {
@@ -118,15 +113,8 @@ async function runChecks() {
   })
   checking = false
   lastCheckedAt = Date.now()
-  nextCheckAt = lastCheckedAt + 60_000
   renderResults()
   renderControls()
-}
-
-function tick() {
-  if (document.hidden) return
-  if (nextCheckAt && Date.now() >= nextCheckAt) void runChecks()
-  else renderControls()
 }
 
 async function start() {
@@ -147,12 +135,10 @@ async function start() {
     get('connection-error').textContent = 'Could not load the server list. Reload this page to retry.'
     get('connection-error').hidden = false
     get('empty-state').hidden = true
-    get('schedule').textContent = 'Server list unavailable'
+    get('check-progress').textContent = 'Server list unavailable'
     return
   }
   void runChecks()
-  setInterval(tick, 1000)
-  document.addEventListener('visibilitychange', tick)
 }
 
 runButton.addEventListener('click', () => void runChecks())
