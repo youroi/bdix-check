@@ -29,3 +29,11 @@ export async function checkEndpoint({ url }, probe = fetch) {
     }
   }
 }
+
+export async function checkEndpoints(endpoints, reportBatch, probe = checkEndpoint) {
+  const batchSize = 12
+  for (let start = 0; start < endpoints.length; start += batchSize) {
+    const batch = await Promise.all(endpoints.slice(start, start + batchSize).map(endpoint => probe(endpoint)))
+    reportBatch(start, batch)
+  }
+}

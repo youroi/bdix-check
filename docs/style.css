@@ -70,8 +70,9 @@ h2 { font-size: 1.125rem; font-weight: 720; letter-spacing: -.02em; }
 .directory-head h2 { margin-right: auto; }
 .filters { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border-radius: 8px; background: #edf1f7; }
 .filters button { min-height: 33px; border: 1px solid transparent; padding: 3px 10px; border-radius: 6px; background: transparent; color: var(--muted); font-size: .82rem; font-weight: 650; }
-.filters button:hover { color: var(--blue); }
+.filters button:not(:disabled):hover { color: var(--blue); }
 .filters button[aria-pressed="true"] { background: var(--surface); border-color: #d9e0ef; color: #1e47b8; }
+.filters button:disabled { opacity: .55; cursor: default; }
 .search { position: relative; }
 .search input { width: 197px; min-height: 41px; padding: 6px 10px 6px 35px; border: 1px solid #cbd5e3; border-radius: 8px; background: var(--surface); color: var(--ink); font-size: .85rem; }
 .search input::placeholder { color: var(--muted); }
@@ -79,6 +80,7 @@ h2 { font-size: 1.125rem; font-weight: 720; letter-spacing: -.02em; }
 .search-icon::after { content: ""; position: absolute; width: 5px; height: 1.5px; background: var(--muted); top: 8px; left: 7px; transform: rotate(45deg); transform-origin: left; }
 
 .table-wrap { overflow-x: auto; }
+.pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 19px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
 table { width: 100%; border-collapse: collapse; text-align: left; }
 thead { background: #eff3f8; }
 th { padding: 8px 18px; color: #4a5870; font-size: .78rem; font-weight: 720; }
