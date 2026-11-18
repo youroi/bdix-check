@@ -1,10 +1,10 @@
 [
   { "name": "ICC Media", "provider": "ICC Communication", "url": "http://10.16.100.244/" },
   { "name": "ICC Media Mirror", "provider": "ICC Communication", "url": "http://10.16.100.202/" },
+  { "name": "ICC Media Mirror 2", "provider": "ICC Communication", "url": "http://10.16.100.206/" },
   { "name": "Dhaka Flix", "provider": "Level3 Carrier", "url": "http://172.16.50.2/" },
-  { "name": "Dhaka Flix FTP", "provider": "Level3 Carrier", "url": "ftp://172.16.50.2/" },
+  { "name": "SamOnline Node", "provider": "SamOnline", "url": "http://172.16.50.7/" },
   { "name": "SamOnline Media", "provider": "SamOnline", "url": "http://movie.sambd.net:8096/" },
-  { "name": "SamOnline FTP", "provider": "SamOnline", "url": "ftp://172.16.50.7/" },
   { "name": "Circle FTP Portal", "provider": "Circle Network", "url": "http://new.circleftp.net/" },
   { "name": "Circle Emby", "provider": "Circle Network", "url": "http://emby.circleftp.net:8096/" }
 ]

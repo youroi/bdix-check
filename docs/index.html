@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Check whether BDIX FTP and media servers respond from your network.">
+  <meta name="description" content="Check whether BDIX media endpoints respond from your browser and ISP connection.">
   <title>BDIX Check</title>
-  <link rel="stylesheet" href="/style.css">
-  <script src="/app.js" type="module"></script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" type="module"></script>
 </head>
 <body>
   <header class="topbar">
     <div class="frame topbar-inner">
-      <a class="brand" href="/" aria-label="BDIX Check home">
+      <a class="brand" href="./" aria-label="BDIX Check home">
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
         BDIX <span>Check</span>
       </a>
-      <span id="connection" class="connection" data-state="pending">Connecting to checker</span>
+      <span class="connection" data-state="online">Your browser</span>
     </div>
   </header>
 
@@ -23,7 +23,8 @@
     <section class="intro" aria-labelledby="page-title">
       <div>
         <h1 id="page-title">BDIX server check</h1>
-        <p>See which FTP and media servers respond from your network.</p>
+        <p>See which BDIX media endpoints respond from your connection.</p>
+        <p class="local-access">In Chrome, choose <strong>Allow</strong> if asked for Local Network Access.</p>
       </div>
       <button type="button" id="run-check" class="primary" aria-disabled="true">
         <span class="check-icon" aria-hidden="true"></span>
@@ -34,11 +35,11 @@
     <section aria-labelledby="overview-title" class="overview">
       <div class="overview-head">
         <h2 id="overview-title">Latest check</h2>
-        <span id="schedule">Waiting for checker</span>
+        <span id="schedule">Loading server list</span>
       </div>
       <div class="overview-data">
         <dl class="totals">
-          <div><dt>Available</dt><dd id="available-count">—</dd></div>
+          <div><dt>Responded</dt><dd id="available-count">—</dd></div>
           <div><dt>Issues</dt><dd id="issue-count">—</dd></div>
           <div><dt>Endpoints</dt><dd id="total-count">—</dd></div>
         </dl>
@@ -54,7 +55,7 @@
         <h2 id="directory-title">Server list</h2>
         <div role="group" aria-label="Filter servers by status" class="filters">
           <button type="button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" data-filter="online" aria-pressed="false">Available</button>
+          <button type="button" data-filter="online" aria-pressed="false">Responded</button>
           <button type="button" data-filter="issues" aria-pressed="false">Issues</button>
         </div>
         <label class="search">
@@ -80,7 +81,7 @@
     </section>
 
     <footer class="footnote">
-      <p>Results reflect the machine running the checker. Some BDIX endpoints are reachable only through specific ISPs.</p>
+      <p>An unconfirmed check can mean the browser blocked HTTP or your ISP could not reach the endpoint. You can open an endpoint directly using its link. FTP port 21 requires an FTP client.</p>
     </footer>
     <p class="sr-only" id="announcement" role="status"></p>
   </main>
@@ -88,7 +89,7 @@
   <template id="server-row">
     <tr role="row">
       <td role="cell"><strong class="server-name"></strong><small class="provider"></small></td>
-      <td role="cell"><span class="protocol"></span> <span class="address"></span></td>
+      <td role="cell"><span class="protocol"></span> <span class="address"><a target="_blank" rel="noopener noreferrer"></a></span></td>
       <td role="cell"><span class="status"></span><small class="detail"></small></td>
       <td role="cell" class="latency"></td>
     </tr>

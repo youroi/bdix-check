@@ -40,6 +40,7 @@ button { cursor: pointer; }
 .intro { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-block: 46px 26px; }
 h1 { font-size: 2.625rem; font-weight: 760; line-height: 1.12; letter-spacing: -.04em; }
 .intro p { margin-top: 8px; color: var(--muted); }
+.intro .local-access { margin-top: 5px; font-size: .83rem; }
 .primary { min-height: 44px; display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-width: 138px; padding: 9px 16px; border: 1px solid transparent; border-radius: 8px; background: var(--blue); color: white; font-weight: 680; white-space: nowrap; font-size: .9rem; }
 .primary:hover { background: #1b3fa9; }
 .primary[aria-disabled="true"] { background: #e2e8f6; color: #3d4f73; cursor: default; }
@@ -62,7 +63,8 @@ h2 { font-size: 1.125rem; font-weight: 720; letter-spacing: -.02em; }
 .status-strip { height: 12px; display: flex; gap: 4px; margin-bottom: 5px; }
 .status-strip i { flex: 1; border-radius: 3px; background: #7b8ba7; }
 .status-strip i[data-state="online"] { background: #68d7b4; }
-.status-strip i[data-state="unreachable"], .status-strip i[data-state="error"], .status-strip i[data-state="redirect"] { background: #f5a77d; }
+.status-strip i[data-state="redirect"] { background: #a4bbea; }
+.status-strip i[data-state="unreachable"], .status-strip i[data-state="error"] { background: #f5a77d; }
 
 .directory { margin-top: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
 .directory-head { padding: 16px 19px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
@@ -95,7 +97,7 @@ td small { display: block; margin-top: 2px; font-size: .765rem; color: var(--mut
 .status { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 5px; background: #edf0f6; color: #465674; font-weight: 690; font-size: .745rem; white-space: nowrap; }
 .status::before { width: 5px; height: 5px; }
 .status[data-state="online"] { background: #e5f5ee; color: var(--teal); }
-.status[data-state="error"], .status[data-state="redirect"] { background: #fff1dd; color: var(--amber); }
+.status[data-state="error"] { background: #fff1dd; color: var(--amber); }
 .status[data-state="unreachable"] { background: #fbecef; color: var(--red); }
 .latency { color: #283e5f; font-size: .86rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .notice { margin: 0 20px 14px; padding: 8px 12px; border-radius: 6px; background: #fbecef; color: var(--red); font-size: .85rem; }

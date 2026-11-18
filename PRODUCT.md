@@ -8,12 +8,8 @@ web
 
 ## Stack
 
-Node.js and browser-native HTML, CSS, and JavaScript. The local Node process provides HTTP and FTP connectivity from the network being tested.
+Static HTML, CSS, and JavaScript on GitHub Pages.
 
 ## Product Purpose
 
-Check a list of BDIX FTP and media endpoints automatically and show which ones respond from the running machine.
-
-## Operating Context
-
-Start with publicly listed endpoints, as requested. The assumed primary setup is a computer on the broadband connection being checked.
+Check a list of publicly documented BDIX web endpoints from the visitor’s own browser and ISP connection. Checks repeat while the page is open.
